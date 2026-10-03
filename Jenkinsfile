@@ -44,7 +44,7 @@ Result: ${currentBuild.currentResult}
 
 Jenkins: ${env.BUILD_URL}
 """,
-                to: "yloh143r@gmail.com"
+                to: "yloh143n@gmail.com"
             )
         }
 
