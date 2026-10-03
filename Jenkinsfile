@@ -45,7 +45,7 @@ Result: ${currentBuild.currentResult}
 
 Jenkins: ${env.BUILD_URL}
 """,
-                to: "yloh143n@gmail.com"
+                to: "ylohith143n@gmail.com"
             )
         }
 
@@ -60,7 +60,7 @@ Result: ${currentBuild.currentResult}
 
 Jenkins: ${env.BUILD_URL}
 """,
-                to: "yloh143n@gmail.com"
+                to: "ylohith143n@gmail.com"
             )
         }
     }
