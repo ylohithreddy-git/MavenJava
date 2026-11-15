@@ -9,7 +9,7 @@ pipeline {
         stage('Git checkout and clean') {
             steps {
                 deleteDir()
-                git branch 'main',
+                git branch: 'main',
                     url: 'https://github.com/ylohithreddy-git/MavenJava.git'
                 bat 'mvn clean'
             }
