@@ -1,67 +1,36 @@
-// Final GitHub webhook test 2
 pipeline {
     agent any
 
     tools {
-        maven 'Maven-3.9'
+        maven 'MAVEN-HOME'
     }
 
     stages {
-
-        stage('git repo & clean') {
+        stage('Git checkout and clean') {
             steps {
-                bat "mvn clean"
+                deleteDir()
+                git branch 'main',
+                    url: 'https://github.com/ylohithreddy-git/MavenJava.git'
+                bat 'mvn clean'
             }
         }
 
-        stage('install') {
+        stage('Install') {
             steps {
-                bat "mvn install"
+                bat 'mvn install'
             }
         }
 
-        stage('test') {
+        stage('Test') {
             steps {
-                bat "mvn test"
+                bat 'mvn test'
             }
         }
 
-        stage('package') {
+        stage('Package') {
             steps {
-                bat "mvn package"
+                bat 'mvn package'
             }
-        }
-    }
-
-    post {
-        success {
-            emailext(
-                subject: "SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: """Build SUCCESS
-
-Job: ${env.JOB_NAME}
-Build: #${env.BUILD_NUMBER}
-Result: ${currentBuild.currentResult}
-
-Jenkins: ${env.BUILD_URL}
-""",
-                to: "ylohith143n@gmail.com"
-            )
-        }
-
-        failure {
-            emailext(
-                subject: "FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: """Build FAILED
-
-Job: ${env.JOB_NAME}
-Build: #${env.BUILD_NUMBER}
-Result: ${currentBuild.currentResult}
-
-Jenkins: ${env.BUILD_URL}
-""",
-                to: "ylohith143n@gmail.com"
-            )
         }
     }
 }
